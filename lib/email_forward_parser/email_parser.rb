@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EmailForwardParser
   class EmailParser
     MAILBOXES_SEPARATORS = [
@@ -646,7 +648,7 @@ module EmailForwardParser
     # @return [Array<Hash>, Hash, nil] The parsed mailbox(es) or nil if not found
     def parse_mailbox(regexes, text, force_array = false)
       match = Utils.loop_regexes(regexes, text)
-      if match && match.length > 0
+      if match&.length&.positive?
         mailboxes_line = Utils.trim_string(match[-1])
 
         if mailboxes_line
@@ -656,7 +658,7 @@ module EmailForwardParser
             mailbox_match = Utils.loop_regexes(@regexes[:mailbox], mailboxes_line)
 
             # Address and / or name available?
-            if mailbox_match && mailbox_match.length > 0
+            if mailbox_match&.length&.positive?
               address = nil
               name = nil
 
@@ -679,7 +681,7 @@ module EmailForwardParser
                 # Remove leading mailboxes separator
                 MAILBOXES_SEPARATORS.each do |separator|
                   if mailboxes_line[0] == separator
-                    mailboxes_line = Utils.trim_string(mailboxes_line[1..-1])
+                    mailboxes_line = Utils.trim_string(mailboxes_line[1..])
                     break
                   end
                 end
@@ -758,13 +760,13 @@ module EmailForwardParser
       # Gmail, Outlook Live / 365, New Outlook 2019, Thunderbird)
       match = Utils.loop_regexes(@regexes[:original_subject], text)
 
-      return Utils.trim_string(match[1]) if match && match.length > 0
+      return Utils.trim_string(match[1]) if match&.length&.positive?
 
       # Second method: extract the subject via the Subject part, using lax
       # regexes (Yahoo Mail)
       match = Utils.loop_regexes(@regexes[:original_subject_lax], text)
 
-      return Utils.trim_string(match[1]) if match && match.length > 0
+      return Utils.trim_string(match[1]) if match&.length&.positive?
 
       nil
     end
@@ -852,7 +854,7 @@ module EmailForwardParser
       # Outlook Live / 365, New Outlook 2019, Thunderbird)
       match = Utils.loop_regexes(@regexes[:original_date], text)
 
-      return Utils.trim_string(match[1]) if match && match.length > 0
+      return Utils.trim_string(match[1]) if match&.length&.positive?
 
       # Second method: extract the date via the separator (Outlook 2019)
       match = Utils.loop_regexes(@regexes[:separator_with_information], body)
@@ -873,7 +875,7 @@ module EmailForwardParser
 
       match = Utils.loop_regexes(@regexes[:original_date_lax], clean_text)
 
-      return Utils.trim_string(match[1]) if match && match.length > 0
+      return Utils.trim_string(match[1]) if match&.length&.positive?
 
       nil
     end

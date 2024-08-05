@@ -45,8 +45,8 @@ def test_email(entry, email, opts = {})
   assert (email.date || "").length > 1
 
   unless skip_from
-    assert_equal FROM_ADDRESS, email.from.dig(:address)
-    assert_equal FROM_NAME, email.from.dig(:name)
+    assert_equal FROM_ADDRESS, email.from[:address]
+    assert_equal FROM_NAME, email.from[:name]
   end
 
   unless skip_to

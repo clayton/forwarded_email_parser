@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "test_helper"
 
 class TestNoCcMultipleTos < Minitest::Test
@@ -11,7 +13,7 @@ class TestNoCcMultipleTos < Minitest::Test
   end
 
   def test_apple_mail_en_body_variant_one
-    result = parse_email("apple_mail_en_body_variant_1")
+    parse_email("apple_mail_en_body_variant_1")
     skip "WIP" # test_email("apple_mail_en_body_variant_1", result, @opts)
   end
 

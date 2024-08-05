@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module EmailForwardParser
   class Parser
     # Constructor
@@ -16,7 +18,6 @@ module EmailForwardParser
       # Check if email was forwarded or not (via the subject)
 
       parsed_subject = @parser.parse_subject(subject) if subject
-      forwarded = false
       forwarded = !subject.nil? && !parsed_subject.nil?
 
       # Check if email was forwarded or not (via the body)
