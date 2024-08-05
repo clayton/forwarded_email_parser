@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-# Specify your gem's dependencies in email_forward_parser.gemspec
+# Specify your gem's dependencies in forwarded_email_parser.gemspec
 gemspec
 
 gem "rake", "~> 13.0"

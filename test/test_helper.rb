@@ -3,7 +3,7 @@
 require "byebug"
 
 $LOAD_PATH.unshift File.expand_path("../lib", __dir__)
-require "email_forward_parser"
+require "forwarded_email_parser"
 
 require "minitest/autorun"
 
@@ -71,6 +71,6 @@ def parse_email(email_file, subject_file = nil)
 
   subject = File.read(File.join(__dir__, "fixtures", "#{subject_file}.txt")) if subject_file
 
-  parser = EmailForwardParser::Parser.new
+  parser = ForwardedEmailParser::Parser.new
   parser.parse(email, subject)
 end

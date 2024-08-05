@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module EmailForwardParser
+module ForwardedEmailParser
   class EmailParser
     MAILBOXES_SEPARATORS = [
       ",", # Apple Mail, Gmail, New Outlook 2019, Thunderbird

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module EmailForwardParser
+module ForwardedEmailParser
   class ParsedEmail
     attr_accessor :forwarded, :message, :email, :subject, :date, :from, :to, :cc, :body
 

@@ -2,7 +2,7 @@
 
 require "test_helper"
 
-class TestEmailForwardParser < Minitest::Test
+class TestForwardedEmailParser < Minitest::Test
   def test_apple_mail_cs_body
     result = parse_email("apple_mail_cs_body")
     test_email("apple_mail_cs_body", result)

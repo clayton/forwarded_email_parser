@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    email_forward_parser (0.1.0)
+    forwarded_email_parser (0.1.0)
 
 GEM
   remote: https://rubygems.org/
@@ -44,7 +44,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  email_forward_parser!
+  forwarded_email_parser!
   minitest (~> 5.16)
   rake (~> 13.0)
   rubocop (~> 1.21)

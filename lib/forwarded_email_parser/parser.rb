@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module EmailForwardParser
+module ForwardedEmailParser
   class Parser
     # Constructor
     def initialize
